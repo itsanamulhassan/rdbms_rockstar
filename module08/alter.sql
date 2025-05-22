@@ -10,7 +10,7 @@ ALTER table user2 ADD COLUMN email VARCHAR(25) DEFAULT ('default@mail.com') NOT 
 
 -- How to insert the data to the new table
 -----------------------------------------------------------------
-insert into user2 values(6, 23, 'afrin', 'afrin@gmail.com');
+insert into user2 values(6, 23, 'fanta', 'fanta@gmail.com');
 
 -- How to delete a column
 -----------------------------------------------
@@ -41,3 +41,25 @@ alter COLUMN user_age set NOT NULL;
 ------------------------------------------------
 alter table user2
 alter COLUMN user_age drop NOT NULL;
+
+
+-- How to add a constraint to the existing column with different way (unique)
+------------------------------------------------
+
+alter table user2
+ADD constraint unique_user2_user_age UNIQUE(user_age);
+
+-- How to add a constraint to the existing column with different way (primary key)
+------------------------------------------------
+alter table user2 
+add constraint pk_user2 PRIMARY KEY(id);
+
+-- How to remove a table
+------------------------------------------------
+Drop Table "user";
+
+-- How to remove all the data for the table
+------------------------------------------------
+
+truncate Table user2;
+
