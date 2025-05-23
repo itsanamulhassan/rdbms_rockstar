@@ -99,3 +99,33 @@ SELECT * FROM students WHERE email IS NOT NULL; -- Finds valid emails
 -- ✅ Replace NULL values with a default using COALESCE
 -- COALESCE picks the first non-null value
 SELECT COALESCE(email, 'not valid') AS "Email" FROM students;
+
+
+-- ✅ Filter with multiple columns with "IN" keyword
+-- "IN" works like multiple "OR" but syntax is more precise
+
+SELECT * from students where country IN('USA', 'Canada');
+SELECT * from students where country NOT IN('USA', 'Canada');
+
+-- ✅ Filter with multiple columns with "BETWEEN" keyword
+-- "BETWEEN" works like multiple "AND" but syntax is more precise
+
+SELECT * FROM students where age BETWEEN 19 AND 20;
+SELECT * FROM students where age NOT BETWEEN 19 AND 20;
+
+-- ✅ Filter table using the "LIKE" keyword
+-- Use "LIKE" to search for specific patterns in string columns (case-sensitive in some DBMS like PostgreSQL)
+-- "%" matches any sequence of characters (including none)
+-- "_" matches a single character
+
+SELECT * FROM students 
+WHERE first_name LIKE 'A%'; 
+-- Finds names starting with 'A', e.g., 'Alice'
+
+SELECT * FROM students 
+WHERE first_name LIKE '%A'; 
+-- Finds names ending with 'A', e.g., 'Nina'
+
+SELECT * FROM students 
+WHERE first_name LIKE '__a%'; 
+-- Finds names where the third letter is 'A', e.g., 'Charlie' (3rd character is A)
