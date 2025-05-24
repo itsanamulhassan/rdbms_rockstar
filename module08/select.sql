@@ -129,3 +129,39 @@ WHERE first_name LIKE '%A';
 SELECT * FROM students 
 WHERE first_name LIKE '__a%'; 
 -- Finds names where the third letter is 'A', e.g., 'Charlie' (3rd character is A)
+
+
+-- ✅ Use "LIMIT" to restrict the number of rows returned
+-- ✅ Use "OFFSET" to skip a number of rows before starting to return rows
+-- Useful for pagination (e.g., showing 5 results per page)
+
+SELECT * FROM students 
+WHERE country IN('USA') 
+LIMIT 5 OFFSET 5 * 0; 
+-- Page 1: shows first 5 rows (OFFSET = 0)
+
+SELECT * FROM students 
+WHERE country IN('USA') 
+LIMIT 5 OFFSET 5 * 1; 
+-- Page 2: skips first 5 rows, shows next 5
+
+
+-- ✅ Use "DELETE" to remove rows from a table
+-- Be specific with conditions to avoid deleting all data by mistake
+
+DELETE FROM students 
+WHERE grade = 'A-' AND country = 'UK'; 
+-- Deletes students who have grade A- and are from the UK
+
+
+-- ✅ Use "UPDATE" to modify existing data in a table
+-- Always use a WHERE clause to target specific rows
+
+UPDATE students 
+SET blood_group = 'AB+' 
+WHERE student_id = 45; 
+-- Updates the blood group of the student with ID 45 to 'AB+'
+
+
+
+
