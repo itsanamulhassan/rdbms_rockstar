@@ -44,3 +44,21 @@ NATURAL JOIN departments;
 -- Example safer alternative:
 -- SELECT * FROM employees e
 -- JOIN departments d ON e.dept_id = d.dept_id;
+
+
+-- Additional Use Cases
+-- ✅ INNER JOIN (more explicit and controlled than NATURAL JOIN)
+SELECT e.emp_id, e.emp_name, d.dept_name
+FROM employees e
+JOIN departments d ON e.dept_id = d.dept_id;
+
+-- ✅ LEFT JOIN (include all employees, even those without a department)
+SELECT e.emp_id, e.emp_name, d.dept_name
+FROM employees e
+LEFT JOIN departments d ON e.dept_id = d.dept_id;
+
+-- ✅ RIGHT JOIN (include all departments, even if no employees)
+SELECT e.emp_id, e.emp_name, d.dept_name
+FROM employees e
+RIGHT JOIN departments d ON e.dept_id = d.dept_id;
+
