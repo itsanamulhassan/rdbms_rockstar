@@ -53,3 +53,11 @@ select * from employees where salary > (Select max(salary) from employees where 
 Select sum(salary) from employees;
 
 SELECT *, (Select sum(salary) from employees) as salary_sum from employees;
+
+SELECT department_name, sum(salary) FROM employees GROUP BY department_name;
+
+SELECT * FROM (SELECT department_name, sum(salary) FROM employees GROUP BY department_name);
+SELECT department_name FROM (SELECT department_name, sum(salary) FROM employees GROUP BY department_name);
+
+
+SELECT employee_name, salary, department_name FROM employees WHERE department_name IN (SELECT department_name FROM employees WHERE department_name LIKE '%R%')
